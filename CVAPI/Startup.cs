@@ -21,6 +21,8 @@ using AutoMapper;
 using CVCore.Interfaces;
 using CVCore.Services;
 using CVInfrastructure.Extensions;
+using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.OpenApi.Models;
 
 namespace CVAPI
 {
@@ -83,6 +85,15 @@ namespace CVAPI
             });
 
             services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "API",
+                    Description = "Test API with ASP.NET Core 3.0",                    
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -92,6 +103,12 @@ namespace CVAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
 
             app.UseRouting();
             app.UseCors(builder => builder                
@@ -100,14 +117,14 @@ namespace CVAPI
                 .AllowAnyHeader()
             );
             app.UseAuthentication();
-            app.UseAuthorization();
-            
+            app.UseAuthorization();           
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 endpoints.MapHealthChecks("/health");
             });
+           
         }
     }
 }

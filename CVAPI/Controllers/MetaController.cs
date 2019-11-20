@@ -10,6 +10,7 @@ namespace CVAPI.Controllers
 {    
     public class MetaController : BaseApiController
     {
+        [HttpGet]
         public ActionResult<string> Version()
         {
             var assembly = typeof(Startup).Assembly;

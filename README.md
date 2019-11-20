@@ -18,5 +18,6 @@ $ update nuget package
 # run on VS 2019 whith .net core 3.0
 $ 
 ```
-
+#Swagger
+$ http://localhost:55233/swagger/index.html
 
