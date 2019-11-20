@@ -9,11 +9,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebAPI", "WebAPI", "{34D9A0BD-E75A-4829-964A-2DCC8B71DC8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CVAPI", "CVAPI\CVAPI.csproj", "{F8B7C4B6-0E58-4EC7-92DA-351E33F523FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CVAPI", "CVAPI\CVAPI.csproj", "{F8B7C4B6-0E58-4EC7-92DA-351E33F523FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CVInfrastructure", "CVInfrastructure\CVInfrastructure.csproj", "{73DF74F5-2A11-41F5-9CFD-A345F54F357B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CVInfrastructure", "CVInfrastructure\CVInfrastructure.csproj", "{73DF74F5-2A11-41F5-9CFD-A345F54F357B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CVCore", "CVCore\CVCore.csproj", "{26DD13EF-93F4-46EC-9B4E-6CE573CFB999}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CVCore", "CVCore\CVCore.csproj", "{26DD13EF-93F4-46EC-9B4E-6CE573CFB999}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B3B8A7DC-AA7C-4868-9C48-83B134CB6FBC}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
