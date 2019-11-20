@@ -80,5 +80,25 @@ namespace CVCore.Services
            return await _context.SaveChangesAsync();            
         }
 
+        public async Task<List<SelectItem>> GetSPNationSelectItems()
+        {
+            List<SelectItem> result = new List<SelectItem>()
+            {
+                new SelectItem()
+                {
+                    label="Выберите",
+                    value=0
+                }
+            };   
+            result.AddRange(await _context.SPNations
+                .Where(x=>x.Active==true)
+                .OrderBy(x=>x.NameRu)
+                .Select(x=>new SelectItem{
+                    label=x.NameRu,
+                    value=x.Id
+                }).ToListAsync());            
+            return result;
+        }
+
     }
 }

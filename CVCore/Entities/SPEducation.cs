@@ -6,5 +6,10 @@ namespace CVCore.Entities
 {
     public class SPEducation:BaseSPEntity
     {
+        public SPEducation()
+        {
+            Educations=new HashSet<Education>();
+        }
+         public ICollection<Education> Educations { get; set; }
     }
 }

@@ -44,5 +44,10 @@ namespace CVAPI.Controllers
             var result = await this._spEducationService.DeleteSPEducation(Id);
             return Ok(result);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetSPEducationSelectItems()
+        {
+            return Ok(await this._spEducationService.GetSPEducationSelectItems());
+        }
     }
 }

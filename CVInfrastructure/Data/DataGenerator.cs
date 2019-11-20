@@ -21,15 +21,13 @@ namespace CVInfrastructure.Data
                 {
                     context.SPNations.AddRange(
                     new SPNation
-                    {
-                        Id = 1,
+                    {                        
                         NameRu = "Узбек",
                         NameUz = "Узбек",
                         NameUzlat = "O'zbek",  
                         Active=true
                     },
-                    new SPNation{
-                        Id = 2,
+                    new SPNation{                        
                         NameRu = "Русский",
                         NameUz = "Рус",
                         NameUzlat = "Rus",                        
@@ -43,7 +41,7 @@ namespace CVInfrastructure.Data
                     context.SPEducations.AddRange(
                     new SPEducation
                     {
-                        Id = 1,
+                        
                         NameRu = "Средняя школа",
                         NameUz = "Урта мактаб",
                         NameUzlat = "",  
@@ -51,7 +49,7 @@ namespace CVInfrastructure.Data
                     },
                     new SPEducation
                     {
-                        Id = 2,
+                        
                         NameRu = "Средняя специальное образование(коледж)",
                         NameUz = "Урта махсус",
                         NameUzlat = "",  
@@ -59,7 +57,7 @@ namespace CVInfrastructure.Data
                     },
                     new SPEducation
                     {
-                        Id = 3,
+                        
                         NameRu = "Высшее образование",
                         NameUz = "Олий",
                         NameUzlat = "",  
@@ -80,7 +78,32 @@ namespace CVInfrastructure.Data
                         };
                       userManager.CreateAsync(user, "4297f44b13955235245b2497399d7a93");
                 }
-
+                if (!context.Staffs.Any())
+                {
+                    context.Staffs.AddRange(new Staff
+                    {
+                        //Id=1,
+                        FIO="Петров Петр Петрович",
+                        BirthDate=new DateTime(2000,10,15),
+                        SPNationId=1,
+                        Phone="998911351236",
+                        Email="info@info.uz",
+                        Active=true,                        
+                    });
+                    context.Jobs.AddRange(new Job{ 
+                        Place="УзСофт",
+                        YearOfBegin="2015",
+                        YearOfEnd="-",
+                        StaffId=1
+                    });
+                    context.Educations.AddRange(new Education{ 
+                         Place="ТУИТ",
+                         YearOfDone="2007",
+                         SPEducationId=1,
+                         StaffId=1
+                    });
+                    context.SaveChanges();
+                }
                 
             }
         }

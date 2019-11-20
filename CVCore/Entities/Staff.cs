@@ -15,6 +15,7 @@ namespace CVCore.Entities
         public string FIO { get; set; }
         public DateTime BirthDate { get; set; }
         public int SPNationId { get; set; }
+        public SPNation SPNation { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
         public bool Active { get; set; }=true;

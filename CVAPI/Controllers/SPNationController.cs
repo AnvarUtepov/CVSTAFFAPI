@@ -45,5 +45,10 @@ namespace CVAPI.Controllers
             var result = await this._spNationService.DeleteSPNation(Id);
             return Ok(result);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetSPNationSelectItems()
+        {
+            return Ok(await this._spNationService.GetSPNationSelectItems());
+        }
     }
 }

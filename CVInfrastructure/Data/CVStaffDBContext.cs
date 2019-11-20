@@ -16,7 +16,6 @@ namespace CVInfrastructure.Data
         {
             
         }
-
         public DbSet<SPNation> SPNations { get; set; }
         public DbSet<SPEducation> SPEducations { get; set; }
         public DbSet<Education> Educations { get; set; }
@@ -29,6 +28,8 @@ namespace CVInfrastructure.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         { 
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Staff>(entity =>
             {
                 entity.ToTable("Staffs");
@@ -45,13 +46,18 @@ namespace CVInfrastructure.Data
 
                 entity.Property(e => e.Phone)
                     .HasColumnName("Phone")
-                    .HasMaxLength(150);                
+                    .HasMaxLength(150);    
+
+                entity.HasOne(d => d.SPNation)
+                   .WithMany(p => p.Staffs)
+                   .HasForeignKey(d => d.SPNationId)
+                   .OnDelete(DeleteBehavior.ClientSetNull)
+                   .HasConstraintName("FK_tbStaff_SPNationId");
             });
 
             modelBuilder.Entity<Job>(entity =>
             {
                 entity.ToTable("tbJob");
-
                 entity.HasOne(d => d.Staff)
                    .WithMany(p => p.Jobs)
                    .HasForeignKey(d => d.StaffId)
@@ -61,13 +67,17 @@ namespace CVInfrastructure.Data
             modelBuilder.Entity<Education>(entity =>
             {
                 entity.ToTable("tbEducation");
-
                 entity.HasOne(d => d.Staff)
                    .WithMany(p => p.Educations)
                    .HasForeignKey(d => d.StaffId)
                    .OnDelete(DeleteBehavior.ClientSetNull)
                    .HasConstraintName("FK_tbEducations_StaffId");
-            });
+                entity.HasOne(d => d.SPEducation)
+                   .WithMany(p => p.Educations)
+                   .HasForeignKey(d => d.SPEducationId)
+                   .OnDelete(DeleteBehavior.ClientSetNull)
+                   .HasConstraintName("FK_tbEducations_EducationId");
+            });            
         }
     }
 }

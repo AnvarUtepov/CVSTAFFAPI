@@ -9,7 +9,9 @@ namespace CVCore.Entities
         public string Place { get; set; }
         public string YearOfDone { get; set; }
         public int SPEducationId { get; set; }
+        public SPEducation SPEducation{get;set;}
         public int StaffId { get; set; }
         public Staff Staff { get; set; }
+        
     }
 }

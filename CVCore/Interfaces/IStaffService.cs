@@ -6,8 +6,8 @@ namespace CVCore.Services
 {
     public interface IStaffService
     {
-        Task<QueryResult<Staff>> GetStaffViewList(TableMetaData tableMetaData);
-        Staff GetById(int Id);
+        Task<QueryResult<StaffListViewModel>> GetStaffViewList(TableMetaData tableMetaData);
+        StaffViewModel GetById(int Id);
         Task<int> SaveUpdateStaff(Staff item);
         Task<int> DeleteStaff(int Id);
     }

@@ -1,5 +1,6 @@
 ﻿using CVCore.Entities;
 using CVCore.ViewModels;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CVCore.Services
@@ -10,5 +11,6 @@ namespace CVCore.Services
         SPEducation GetById(int Id);
         Task<int> SaveUpdateSPEducation(SPEducation item);
         Task<int> DeleteSPEducation(int Id);
+        Task<List<SelectItem>> GetSPEducationSelectItems();
     }
 }

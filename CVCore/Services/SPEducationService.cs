@@ -80,5 +80,24 @@ namespace CVCore.Services
            _context.SPEducations.Update(item);
            return await _context.SaveChangesAsync();            
         }
+        public async Task<List<SelectItem>> GetSPEducationSelectItems()
+        {
+            List<SelectItem> result = new List<SelectItem>()
+            {
+                new SelectItem()
+                {
+                    label="Выберите",
+                    value=0
+                }
+            };   
+            result.AddRange(await _context.SPEducations
+                .Where(x=>x.Active==true)
+                .OrderBy(x=>x.NameRu)
+                .Select(x=>new SelectItem{
+                    label=x.NameRu,
+                    value=x.Id
+                }).ToListAsync());            
+            return result;
+        }
     }
 }

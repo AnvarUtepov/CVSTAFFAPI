@@ -13,5 +13,6 @@ namespace CVCore.Interfaces
         SPNation GetById(int Id);
         Task<int> SaveUpdateSPNation(SPNation item);
         Task<int> DeleteSPNation(int Id);
+        Task<List<SelectItem>> GetSPNationSelectItems();
     }
 }

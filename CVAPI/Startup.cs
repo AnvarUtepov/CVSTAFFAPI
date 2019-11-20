@@ -39,7 +39,8 @@ namespace CVAPI
             services.AddAutoMapper(typeof(Startup));
             services.AddCors();
             services.AddHealthChecks();
-            
+
+            //services.AddDbContext<CVStaffDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddDbContext<CVStaffDBContext>(options => options.UseInMemoryDatabase(databaseName: "CVStaff"));
             
             services.AddScoped<IJwtToken, JwtToken>();
@@ -47,8 +48,7 @@ namespace CVAPI
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<ISPNationService, SPNationService>();
             services.AddScoped<ISPEducationService, SPEducationService>();
-            services.AddScoped<IStaffService, StaffService>();
-            
+            services.AddScoped<IStaffService, StaffService>();            
             
             // ===== Add Jwt Authentication ========
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
